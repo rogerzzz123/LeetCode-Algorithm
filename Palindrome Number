@@ -1,0 +1,37 @@
+## Solution 1
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        if ((x > 2**31 -1) & (x < -2**31)): return False
+        if x < 0: return False
+        
+        x_r = str(x)
+        y = list(x_r)
+        y.reverse()
+        x_r = "".join(y)
+        x_r = int(x_r)
+        if x_r != x: 
+            return False
+        return True
+        
+ ## Solution 2 - credit to ZitaoWang
+ https://leetcode.com/problems/palindrome-number/discuss/158483/Python-solution
+ class Solution(object):
+    def isPalindrome(self, x):
+        """
+        :type x: int
+        :rtype: bool
+        """
+        if x < 0:
+            return False
+        elif x == 0:
+            return True
+        x = str(x)
+        lmost = 0
+        rmost = len(x)-1
+        while lmost <= rmost:
+            if x[lmost] != x[rmost]:
+                return False
+            else:
+                lmost += 1
+                rmost -= 1
+        return True
